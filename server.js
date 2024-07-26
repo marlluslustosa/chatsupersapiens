@@ -4,12 +4,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.post('/chat', (req, res) => {
+app.post('/api/chat', (req, res) => {
     const question = req.body.question;
 
     const config = {
@@ -21,7 +20,7 @@ app.post('/chat', (req, res) => {
 
     const data = {
         referenceSources: true,
-	sourceId: process.env.CHATPDF_SOURCE_ID,
+        sourceId: process.env.CHATPDF_SOURCE_ID,
         messages: [
             {
                 role: "user",
@@ -40,7 +39,4 @@ app.post('/chat', (req, res) => {
         });
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
-
+module.exports = app;

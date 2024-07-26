@@ -139,7 +139,7 @@
             showLoading();
 
             axios
-                .post('http://localhost:3000/chat', { question })
+                .post('https://chatsupersapiens.vercel.app/', { question })
                 .then((response) => {
                     hideLoading();
                     addMessage(question, 'user');
